@@ -3,6 +3,7 @@ from django.views.generic import ListView
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import *
 
 def index(request):
     return HttpResponse("HELLO WORLD")
@@ -43,3 +44,19 @@ def login(request):
         context=super().get_context_data(**kwargs)
         context['name_list']=Product.objects.values('type','name').distinct
         return context'''
+
+def create(request):
+    Product.objects.create(id=44,name='插入',type='test')#插入数据语法
+    return HttpResponse("success")
+def updatel(request):
+    p=Product.objects.get(id=44)
+    p.name='更新'
+    p.save()
+    return HttpResponse("update")
+def select(request):
+    p = Product.objects.get(id=2)
+    return HttpResponse(p.name)
+def delete(request):
+    p = Product.objects.get(id=2).delete()
+    return HttpResponse("delete")
+
