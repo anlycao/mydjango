@@ -12,11 +12,13 @@ urlpatterns=[
     re_path('dict/(?P<year>[0-9]{4}).html', views.myyear_dict, {'month':'05'},name='myyear_dict'),
     path('download.html',views.download),
     path('',views.index),
+    path('data.html',views.data),
     path('login.html',views.login),
     #path('indexl/',views.ProductList.as_view())
     path('create/',views.create),
     path('update/',views.updatel),
     path('select/',views.select),
-    path('delete/',views.delete)
+    path('delete/',views.delete),
+    path('form.html',views.form)
 
 ]

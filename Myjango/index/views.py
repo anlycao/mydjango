@@ -4,16 +4,30 @@ from django.views.generic import ListView
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
+from .form import *
 
-def index(request):
-    return HttpResponse("HELLO WORLD")
+def data(request):
+    if request.method=='GET':
+          product=ProductForm()
+          return render(request,'data_form.html',locals())
+    else:
+        product = ProductForm(request.POST)
+        if product.is_valid():
+        #name=product['name']
+            cname=product.cleaned_data['name']
+            #tpye=product['type']
+            return render(request, 'data_form.html', locals())
+        else:
+            error_msg=product.error.as_json()
+            print(error_msg)
+            return render(request,'data_form.html',locals())
 def mydate(request,year,month,day):
     return HttpResponse(str(year)+'/'+str(month)+'/'+str(day))
 def myyear(request,year):
     return render(request,'myyear.html')
 def myyear_dict(request,year,month):
     return render(request,'myyear_dict.html',{'month':month})
-def download(request):
+def download(request):  #下载
     response=HttpResponse(content_type='text/csv')
     response['Content_Disposition']='attachment;filename="somefilename.csv"'
     writer=csv.writer(response)
@@ -59,4 +73,6 @@ def select(request):
 def delete(request):
     p = Product.objects.get(id=2).delete()
     return HttpResponse("delete")
+def form(request):
+    return render(request,'form.html')
 
