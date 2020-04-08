@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>马德良吃粑粑，略略略。。。。</h1>
+{% if username%}
+<li> 用户名：{{username}}</li>
+<li><a href="{% url 'logout' %}">退出登录</a></li>
+{% else %}
+<li><a href="{% url 'login' %}">登录</a></li>
+<li><a href="{% url 'register' %}">注册</a></li>
+{% endif %}
 </body>
 </html>

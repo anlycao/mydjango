@@ -19,5 +19,5 @@ from django.urls import path, include  # 导入url编写模块
 urlpatterns = [
     path('admin/', admin.site.urls),#设定admin的url
     path('',include('index.urls')),#url为空，代表网站域名
-   # path('',include('user.urls'))
+    path('user/',include('user.urls'))
 ]

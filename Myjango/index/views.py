@@ -34,7 +34,8 @@ def download(request):  #下载
     writer.writerow(['First row','A','B','C'])
     return response
 def index(request):
-    return render(request,'indexl.html',context={'title':'首页'},status=500)
+    username=request.user.username    #获取当前用户名
+    return render(request,'indexl.html',locals())
 
 def login(request):
     if request.method=='POST':

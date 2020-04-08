@@ -11,10 +11,10 @@ urlpatterns=[
     #re_path('(?P<year>[0-9]{4}).html', views.myyear,name='myyear'),
     re_path('dict/(?P<year>[0-9]{4}).html', views.myyear_dict, {'month':'05'},name='myyear_dict'),
     path('download.html',views.download),
-    path('',views.index),
+    path('/',views.index),
     path('data.html',views.data),
-    path('login.html',views.login),
-    #path('indexl/',views.ProductList.as_view())
+    #path('login.html',views.login),
+    #path('/',views.ProductList.as_view()),
     path('create/',views.create),
     path('update/',views.updatel),
     path('select/',views.select),
